@@ -1,3 +1,6 @@
 @tailwind base;
 @tailwind components;
+.icon-settler {
+  @apply flex p-2 items-center justify-center rounded-full;
+}
 @tailwind utilities;

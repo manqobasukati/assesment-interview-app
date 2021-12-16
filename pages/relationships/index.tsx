@@ -3,8 +3,9 @@ import Navigation from '../../components/navigation';
 
 const Relationships: NextPage = () => {
   return (
-    <div>
+    <div className=" flex items-center justify-center  h-screen w-full">
       <Navigation />
+      <div>Relationships</div>
     </div>
   );
 };
