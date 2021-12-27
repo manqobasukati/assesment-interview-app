@@ -1,16 +1,23 @@
 import { NextPage } from 'next';
 import { useState } from 'react';
+import { findRelationShip } from '../../algo';
 import Navigation from '../../components/navigation';
 import { people } from '../people';
 
 const Relationships: NextPage = () => {
   const persons = Object.keys(people);
 
-  const [fisrtPerson, setFirstPerson] = useState();
+  const [firstPerson, setFirstPerson] = useState();
   const [secondPerson, setSecondPerson] = useState();
+  const [degree,setDegree] = useState('');
 
   const handleButtonCheck = () => {
-    console.log(fisrtPerson, secondPerson);
+    console.log('show', firstPerson, secondPerson);
+    if (firstPerson && secondPerson) {
+      const relationship = findRelationShip(people, firstPerson, secondPerson);
+      const st = relationship.join(' > ');
+      setDegree(st)
+    }
   };
 
   return (
@@ -26,6 +33,7 @@ const Relationships: NextPage = () => {
             <select
               onChange={(e: any) => {
                 const name = e.target.value;
+               
                 setFirstPerson(name);
               }}
               className="border-purple-200  border-2 p-2 rounded-md focus:outline-none"
@@ -64,10 +72,14 @@ const Relationships: NextPage = () => {
             </select>
           </div>
         </div>
-        <button onClick={handleButtonCheck} className="bg-purple-200 p-2 text-white rounded-sm">
+        <button
+          onClick={handleButtonCheck}
+          className="bg-purple-200 p-2 text-white rounded-sm"
+        >
           Check
         </button>
         <div className="text-gray-500">Degree of seperation</div>
+        <div>{degree}</div>
       </div>
     </div>
   );
