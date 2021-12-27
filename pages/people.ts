@@ -1,9 +1,9 @@
 import { Person } from '../types/Person.model';
 
-export const people: Person = {
+export let people: Person = {
   Manqoba: ['Andile'],
   Andile: ['Maseko', 'Msime'],
   Simphiwe: ['Sinqobile'],
 };
 
-export default people;
+

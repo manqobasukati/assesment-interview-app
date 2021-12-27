@@ -37,7 +37,12 @@ const People: NextPage = () => {
             );
           })}
         </div>
-        <button className="bg-purple-300 p-2 text-white rounded-md">
+        <button
+          onClick={() => {
+            router.push('/people/add-person');
+          }}
+          className="bg-purple-300 p-2 text-white rounded-md"
+        >
           Add Person
         </button>
       </div>
