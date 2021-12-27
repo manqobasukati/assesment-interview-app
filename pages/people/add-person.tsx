@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { NextPage } from 'next/types';
 import { useEffect, useState } from 'react';
 import Navigation from '../../components/navigation';
-import people from '../people';
+import { people } from '../people';
 
 const AddPerson: NextPage = () => {
   const [person, setPerson] = useState();
@@ -22,14 +22,14 @@ const AddPerson: NextPage = () => {
       return val;
     });
     const p = { [e.target.name.value]: f };
-    console.log(p);
+    //people = { ...people };
   };
 
   useEffect(() => {
     const handleFriendClick = (person: string) => {
       console.log(person);
       personFriends.push(person);
-      //setPersonFriends(personFriends);
+     
     };
     handleFriendClick(activeFriend);
   }, [activeFriend]);

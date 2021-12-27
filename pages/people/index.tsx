@@ -7,7 +7,7 @@ import { Person } from '../../types/Person.model';
 import { useRouter } from 'next/router';
 import db from '../../localStorageHandler';
 import localStorageHandler from '../../localStorageHandler';
-import people from '../people';
+import {people} from '../people';
 
 const People: NextPage = () => {
   const router = useRouter();
