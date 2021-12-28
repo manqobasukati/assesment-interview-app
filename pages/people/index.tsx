@@ -2,17 +2,19 @@ import { NextPage } from 'next';
 import Navigation from '../../components/navigation';
 import PeopleCard from '../../components/PeopleCard';
 import 'material-design-icons/iconfont/material-icons.css';
-import { useEffect, useState } from 'react';
-import { Person } from '../../types/Person.model';
+import { useState } from 'react';
+
 import { useRouter } from 'next/router';
-import db from '../../localStorageHandler';
-import localStorageHandler from '../../localStorageHandler';
-import {people} from '../people';
+
+import { people } from '../people';
+import DialogBox from '../../components/DiaglogBox';
 
 const People: NextPage = () => {
   const router = useRouter();
 
   const [friends, setFriends] = useState(people);
+
+  const [dialogState, setDialog] = useState(false);
 
   const [selectedFriend, setSelectedFriend] = useState('Manqoba');
 
@@ -20,12 +22,18 @@ const People: NextPage = () => {
     router.push({ pathname: `/people/${person}` });
   };
 
+  const handleDialog = (details: { name: string }) => {
+    friends[details.name] = [];
+    setFriends(friends);
+    setDialog(!dialogState);
+  };
+
   return (
     <div className=" flex items-center justify-center  h-screen w-full">
       <Navigation />
       <div className="flex flex-col gap-4">
         <div className="text-2xl text-center">People </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 overflow-y-auto h-72">
           {Object.keys(friends).map((val, index) => {
             return (
               <PeopleCard
@@ -39,13 +47,16 @@ const People: NextPage = () => {
         </div>
         <button
           onClick={() => {
-            router.push('/people/add-person');
+            setDialog(!dialogState);
           }}
-          className="bg-purple-300 p-2 text-white rounded-md"
+          className="bg-purple-300 p-2 text-white rounded-md mt-2"
         >
           Add Person
         </button>
       </div>
+      {dialogState ? (
+        <DialogBox showDialog={dialogState} handler={handleDialog} />
+      ) : null}
     </div>
   );
 };

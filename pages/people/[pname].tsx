@@ -10,6 +10,7 @@ import { useState } from 'react';
 const Person = () => {
   const router = useRouter();
 
+  const [peop, setPeople] = useState(people);
 
   const styles = {
     person_icon: {
@@ -25,8 +26,7 @@ const Person = () => {
   };
 
   if (pname) {
-    currentPerson = { name: pname as string, friends: people[pname as string] };
-    console.log(currentPerson.friends);
+    currentPerson = { name: pname as string, friends: peop[pname as string] };
   }
 
   const handleDeletePerson = () => {
@@ -36,9 +36,11 @@ const Person = () => {
   const [dialogState, setDialog] = useState(false);
 
   const handleDialog = (details: { name: string }) => {
-    people['emmanuel'].push(details.name);
-    console.log(people)
-    setDialog(!dialogState);
+    if (details.name) {
+      peop[details.name].push(details.name);
+      setPeople(peop);
+      setDialog(!dialogState);
+    }
   };
 
   return (
@@ -59,16 +61,17 @@ const Person = () => {
           </div>
           <div className="flex flex-col gap-2">
             <div className="text-gray-400">Friends</div>
-
-            {currentPerson.friends.map((val, index) => {
-              return (
-                <PersonFriend
-                  key={index}
-                  name={val}
-                  deleteFriend={handleDeletePerson}
-                />
-              );
-            })}
+            <div className="flex flex-col overflow-y-scroll h-64">
+              {currentPerson.friends.map((val, index) => {
+                return (
+                  <PersonFriend
+                    key={index}
+                    name={val}
+                    deleteFriend={handleDeletePerson}
+                  />
+                );
+              })}
+            </div>
           </div>
         </div>
         <div className="flex w-full justify-center">
