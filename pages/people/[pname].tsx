@@ -4,9 +4,12 @@ import Navigation from '../../components/navigation';
 import { people } from '../people';
 
 import PersonFriend from '../../components/PersonFriend';
+import DialogBox from '../../components/DiaglogBox';
+import { useState } from 'react';
 
 const Person = () => {
   const router = useRouter();
+
 
   const styles = {
     person_icon: {
@@ -16,15 +19,26 @@ const Person = () => {
   };
 
   const { pname } = router.query;
-  let currentPerson:{name:string,friends:string[]} = {} as {name:string,friends:string[]};
+  let currentPerson: { name: string; friends: string[] } = {} as {
+    name: string;
+    friends: string[];
+  };
 
   if (pname) {
     currentPerson = { name: pname as string, friends: people[pname as string] };
-    console.log(currentPerson.friends)
+    console.log(currentPerson.friends);
   }
 
   const handleDeletePerson = () => {
     console.log('Delete persone');
+  };
+
+  const [dialogState, setDialog] = useState(false);
+
+  const handleDialog = (details: { name: string }) => {
+    people['emmanuel'].push(details.name);
+    console.log(people)
+    setDialog(!dialogState);
   };
 
   return (
@@ -58,11 +72,19 @@ const Person = () => {
           </div>
         </div>
         <div className="flex w-full justify-center">
-          <button className="bg-purple-300 p-2 rounded-sm text-white">
+          <button
+            onClick={() => {
+              setDialog(!dialogState);
+            }}
+            className="bg-purple-300 p-2 rounded-sm text-white"
+          >
             Add friend{' '}
           </button>
         </div>
       </div>
+      {dialogState ? (
+        <DialogBox showDialog={dialogState} handler={handleDialog} />
+      ) : null}
     </div>
   );
 };
