@@ -32,7 +32,7 @@ const Navigation = () => {
 
   return (
     <div className="absolute left-0 top-0 w-full bg-purple-600 flex p-2 items-center justify-between text-white">
-      <div className=" text-2xl font-bold">Connections</div>
+      <div className=" text-2xl font-bold">Assigment App</div>
       <div className="flex gap-4 text-lg items-center justify-center">
         {navigationItem.map((item: NavigationItem, index) => {
           return (

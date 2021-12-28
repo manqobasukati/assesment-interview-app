@@ -36,9 +36,12 @@ const Person = () => {
   const [dialogState, setDialog] = useState(false);
 
   const handleDialog = (details: { name: string }) => {
+    console.log(details);
     if (details.name) {
-      peop[details.name].push(details.name);
+      peop[currentPerson.name].push(details.name);
       setPeople(peop);
+      setDialog(!dialogState);
+    } else {
       setDialog(!dialogState);
     }
   };

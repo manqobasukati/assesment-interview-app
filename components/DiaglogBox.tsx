@@ -10,7 +10,7 @@ const DialogBox = (props: { handler: Function; showDialog: boolean }) => {
   const [friendName, setFriendName] = useState();
   //   const [dialogState, setDialogState] = useState(false);
   const showDialog = () => {
-    props.handler({ name: 'Manqoba sukati' });
+    props.handler({ name: '' });
   };
 
   return (
