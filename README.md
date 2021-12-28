@@ -4,4 +4,24 @@ Thank you for giving me this opportunity to tackle this assesment as part of the
 
 The algroithm part of the project was the most challenging and enjoyable part, the solution I provided is somewhat lacking but its a able to provide atleast one degree of separation.
 
-## How to run project.
+## Project link
+here
+
+## How to run project locally.
+
+First clone from github
+
+`git clone https://github.com/manqobasukati/assesment-interview-app`
+
+Enter directory
+
+`cd assesment-interview-app`
+
+Install packages
+
+`npm i`
+
+Run project
+
+`npm run dev`
+
