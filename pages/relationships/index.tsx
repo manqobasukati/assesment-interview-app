@@ -9,14 +9,14 @@ const Relationships: NextPage = () => {
 
   const [firstPerson, setFirstPerson] = useState();
   const [secondPerson, setSecondPerson] = useState();
-  const [degree,setDegree] = useState('');
+  const [degree, setDegree] = useState('');
 
   const handleButtonCheck = () => {
     console.log('show', firstPerson, secondPerson);
     if (firstPerson && secondPerson) {
       const relationship = findRelationShip(people, firstPerson, secondPerson);
       const st = relationship.join(' > ');
-      setDegree(st)
+      setDegree(st);
     }
   };
 
@@ -33,7 +33,7 @@ const Relationships: NextPage = () => {
             <select
               onChange={(e: any) => {
                 const name = e.target.value;
-               
+
                 setFirstPerson(name);
               }}
               className="border-purple-200  border-2 p-2 rounded-md focus:outline-none"
@@ -79,7 +79,9 @@ const Relationships: NextPage = () => {
           Check
         </button>
         <div className="text-gray-500">Degree of seperation</div>
-        <div>{degree}</div>
+        <div className="text-md font-bold text-gray-600">
+          {degree ? degree : 'No relation'}
+        </div>
       </div>
     </div>
   );
