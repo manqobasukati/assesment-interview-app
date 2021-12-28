@@ -111,5 +111,4 @@ export function findRelationShip(
   //console.log(realObj[first_person], placefound);
 }
 
-const relate: string[] = findRelationShip(people, 'manqoba', 'gift');
-const st = relate.join(' > ');
+
