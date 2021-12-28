@@ -1,20 +1,20 @@
 import { NextPage } from 'next';
 import { useState } from 'react';
-import { findRelationShip } from '../../algo';
+import { findRelationShip, getAllKeyValues } from '../../algo';
 import Navigation from '../../components/navigation';
 import { people } from '../people';
 
 const Relationships: NextPage = () => {
-  const persons = Object.keys(people);
+  const persons = getAllKeyValues(people);
 
   const [firstPerson, setFirstPerson] = useState();
   const [secondPerson, setSecondPerson] = useState();
   const [degree, setDegree] = useState('');
 
   const handleButtonCheck = () => {
-    console.log('show', firstPerson, secondPerson);
     if (firstPerson && secondPerson) {
       const relationship = findRelationShip(people, firstPerson, secondPerson);
+      console.log(relationship)
       const st = relationship.join(' > ');
       setDegree(st);
     }

@@ -1,8 +1,8 @@
 import { Person } from '../types/Person.model';
 
 export let people: Person = {
-  manqoba: ['emmanuel'],
-  gift: ['manqoba'],
-  emmanuel: ['gift'],
-  silwane: ['emmanuel'],
+  Aayushi: ['Sameer'],
+  Bhaskar: ['Aayushi', 'Shanti Kumar Saha'],
+  'Kamalnath Sharma': ['Sameer'],
+  'Shanti Kumar Saha': ['Kamalnath Sharma'],
 };
