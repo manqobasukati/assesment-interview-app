@@ -62,7 +62,7 @@ const Person = () => {
           <div className="flex flex-col gap-2">
             <div className="text-gray-400">Friends</div>
             <div className="flex flex-col overflow-y-scroll h-64">
-              {currentPerson.friends.map((val, index) => {
+              {currentPerson.friends?.map((val, index) => {
                 return (
                   <PersonFriend
                     key={index}
